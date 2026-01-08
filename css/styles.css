@@ -56,6 +56,27 @@ body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helveti
 .btn.ghost{background:transparent;border:1px solid rgba(0,0,0,.06)}
 /* Focus-visible for keyboard users only */
 :focus:not(:focus-visible){outline:none}
+/* Steam / warmth animation for hero */
+.hero-steam{position:relative;overflow:hidden}
+.hero-steam::before{
+  content:'';position:absolute;left:-10%;right:-10%;top:-30%;height:160%;background:radial-gradient(closest-side, rgba(255,255,255,0.18), rgba(255,255,255,0) 40%);
+  transform:translateY(-20%);opacity:.6;filter:blur(36px);animation:steam 10s linear infinite}
+@keyframes steam{0%{transform:translateY(-20%)}50%{transform:translateY(-10%)}100%{transform:translateY(-20%)}}
+
+/* Trust banner */
+.trust-banner{background:linear-gradient(90deg,var(--accent-2),var(--accent));color:#fff;padding:.4rem 1rem;border-radius:10px;margin:1rem auto;text-align:center;font-weight:600;box-shadow:var(--shadow);}
+
+/* Mobile sticky CTA for Call/WhatsApp */
+.mobile-cta{position:fixed;left:0;right:0;bottom:0;display:flex;gap:.5rem;padding:.6rem;justify-content:center;background:linear-gradient(180deg,rgba(255,255,255,0.95),rgba(255,255,255,0.9));box-shadow:0 -6px 18px rgba(0,0,0,0.06);z-index:60}
+.mobile-cta .btn{padding:.7rem 1rem;border-radius:999px}
+.mobile-cta .btn.primary{background:var(--accent);color:#fff}
+.mobile-cta .btn.secondary{background:var(--accent-2);color:#fff}
+@media(min-width:760px){.mobile-cta{display:none}}
+
+/* Scroll-in animations */
+.animate-on-scroll{opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease}
+.animate-on-scroll.in-view{opacity:1;transform:none}
+
 /* Desktop adjustments */
 @media(min-width:480px){
   .grid{grid-template-columns:repeat(2,1fr)}

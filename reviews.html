@@ -11,21 +11,23 @@
 <a class="skip-link" href="#main-content">Skip to main content</a>
 <header class="site-header"><div class="container nav-row"><a class="logo" href="index.html">Hot Tea</a><nav class="primary-nav"><ul><li><a href="menu.html">Menu</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Visit</a></li></ul></nav></div></header>
 <main id="main-content" class="container">
-  <h1>Reviews</h1>
-  <p class="muted">Real customer sentiment from Google reviews</p>
-  <section id="live-reviews" class="review-cards">
-    <!-- Fallback static reviews (shown if JS is unavailable) -->
-    <article class="review-card"><h3>Priya</h3><p>Best food and very hygienic food ❤️</p><div class="stars">★★★★★</div></article>
-    <article class="review-card"><h3>Rahul</h3><p>Amazing taste, good quality food stuff</p><div class="stars">★★★★★</div></article>
-    <article class="review-card"><h3>Sneha</h3><p>Nice experience, good food</p><div class="stars">★★★★★</div></article>
+  <h1>What Our Customers Say</h1>
+  <p class="muted">Real feedback highlighting taste, hygiene, and service.</p>
+
+  <section class="review-cards themed-reviews">
+    <article class="review-card"><h3>Taste</h3><p>"Amazing taste, good quality food stuff" — Rahul, ★★★★★</p></article>
+    <article class="review-card"><h3>Hygiene</h3><p>"Best food and very hygienic food ❤️" — Priya, ★★★★★</p></article>
+    <article class="review-card"><h3>Service</h3><p>"Nice experience, good food" — Sneha, ★★★★★</p></article>
   </section>
-  <p class="visit-cta"><a class="btn primary" href="contact.html">Visit Hot Tea & Taste the Difference</a></p>
+
+  <p class="visit-cta"><a class="btn primary" href="contact.html">Visit Once. You’ll Be Back.</a></p>
+
   <section class="reviews-integration">
-    <h2>Integrate live reviews</h2>
-    <p class="muted">To show live Google reviews, use the Google Places API or a trusted widget. See README for guidance and a sample serverless endpoint.</p>
-    <div class="muted small">Live reviews (when deployed):</div>
-    <div class="muted small">Endpoint: <code>/.netlify/functions/get-reviews</code></div>
+    <h2>Live reviews</h2>
+    <p class="muted">The live reviews below (when available) are sanitized and shown via the serverless endpoint.</p>
+    <div id="live-reviews" class="review-cards"></div>
   </section>
+
   <!-- client script to fetch sanitized reviews from serverless function -->
   <script src="js/reviews-client.js" defer></script>
 </main>

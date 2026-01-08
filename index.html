@@ -46,56 +46,72 @@
   </header>
 
   <main>
-    <section class="hero">
+    <!-- Trust banner -->
+    <!-- <div class="trust-banner container">⭐ Loved by customers for taste & hygiene</div> -->
+
+    <section class="hero hero-steam animate-on-scroll">
       <div class="container hero-inner">
         <h1>Great Taste. Hygienic Food. Warm Conversations.</h1>
-        <p>Hot Tea is your go-to café for delicious food, refreshing tea & coffee, and a clean, comfortable experience.</p>
+        <p class="lead">A cozy café serving delicious snacks, momos, pasta, mocktails, and more.</p>
+        <p class="subtext muted">Affordable prices. Hygienic preparation. Consistent taste.</p>
         <div class="cta-row">
-          <a class="btn primary" href="menu.html">View Menu</a>
-          <a class="btn secondary" href="contact.html">Visit Us Today</a>
+          <a class="btn primary" href="menu.html">Explore Our Menu</a>
+          <a class="btn secondary" href="contact.html">Visit Hot Tea Today</a>
         </div>
       </div>
     </section>
 
-    <section class="highlights container" aria-label="Highlights">
+    <section class="highlights container animate-on-scroll" aria-label="Highlights">
       <article class="card">
         <div class="icon">⭐</div>
-        <h3>Best Taste</h3>
+        <div>
+          <h3>Best Taste</h3>
+          <p class="muted small">Loved by regular customers</p>
+        </div>
       </article>
       <article class="card">
         <div class="icon">🧼</div>
-        <h3>Highly Hygienic</h3>
+        <div>
+          <h3>Highly Hygienic</h3>
+          <p class="muted small">Clean kitchen & fresh prep</p>
+        </div>
       </article>
       <article class="card">
         <div class="icon">🍕</div>
-        <h3>Fresh Food & Pizza</h3>
+        <div>
+          <h3>Fresh Food</h3>
+          <p class="muted small">Made after you order</p>
+        </div>
       </article>
       <article class="card">
         <div class="icon">💰</div>
-        <h3>Affordable (₹200–400)</h3>
+        <div>
+          <h3>Affordable</h3>
+          <p class="muted small">₹200–400 per person</p>
+        </div>
       </article>
     </section>
 
-    <section class="reviews container" aria-label="Customer reviews">
-      <h2>What customers say</h2>
+    <section class="reviews container animate-on-scroll" aria-label="Customer reviews">
+      <h2>★★★★★ Rated on Google</h2>
       <div class="review-list">
         <blockquote class="review">
           <p>"Best food and very hygienic food ❤️"</p>
-          <footer>— Priya, ★★★★★</footer>
+          <footer>— Priya, 5 days ago, ★★★★★</footer>
         </blockquote>
         <blockquote class="review">
           <p>"Amazing taste, good quality food stuff"</p>
-          <footer>— Rahul, ★★★★★</footer>
+          <footer>— Rahul, 2 weeks ago, ★★★★★</footer>
         </blockquote>
         <blockquote class="review">
           <p>"Nice experience, good food"</p>
-          <footer>— Sneha, ★★★★★</footer>
+          <footer>— Sneha, 1 month ago, ★★★★★</footer>
         </blockquote>
       </div>
-      <p class="reviews-cta"><a href="reviews.html" class="btn tertiary">Read more reviews</a></p>
+      <p class="reviews-cta"><a href="reviews.html" class="btn tertiary">See why customers keep coming back</a></p>
     </section>
 
-    <section class="gallery container" aria-label="Gallery preview">
+    <section class="gallery container animate-on-scroll" aria-label="Gallery preview">
       <h2>Peek inside</h2>
       <div class="grid">
         <img src="assets/images/cafe-interior.svg" alt="Cozy cafe interior" loading="lazy">
@@ -104,12 +120,13 @@
       </div>
     </section>
 
-    <section class="location container" aria-label="Location">
-      <h2>Easy to find. Easy to love.</h2>
+    <section class="location container animate-on-scroll" aria-label="Location">
+      <h2>Plan Your Visit</h2>
       <div class="map-embed">
         <!-- Replace src with your Google Maps embed URL -->
         <iframe title="Hot Tea Location" src="https://www.google.com/maps/embed?pb=!1m18!2m3" loading="lazy"></iframe>
       </div>
+      <p class="muted">Easy to find. Perfect for quick bites, hangouts, and casual meals.</p>
       <p><a href="contact.html" class="btn secondary">Visit / Get Directions</a></p>
     </section>
 
@@ -134,5 +151,12 @@
   </footer>
 
   <script src="js/main.js" defer></script>
+  <script src="js/scroll.js" defer></script>
+
+  <!-- Mobile sticky CTA -->
+  <div class="mobile-cta" role="region" aria-label="Quick actions">
+    <a class="btn primary" href="tel:+911234567890">Call</a>
+    <a class="btn secondary" href="https://wa.me/911234567890">WhatsApp</a>
+  </div>
 </body>
 </html>
