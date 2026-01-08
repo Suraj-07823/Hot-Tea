@@ -11,7 +11,13 @@
   <a class="skip-link" href="#main-content">Skip to main content</a>
   <header class="site-header">
     <div class="container nav-row">
-      <a class="logo" href="index.html">Hot Tea</a>
+      <div class="logo-group">
+        <a class="logo" href="index.html">
+          <img src="assets/images/logo.svg" alt="Hot Tea — Cozy Cafe" width="168" height="56">
+          <span class="sr-only">Hot Tea</span>
+        </a>
+        <div class="micro-hygiene muted">Hygiene First</div>
+      </div>
       <nav class="primary-nav"><ul><li><a href="index.html">Home</a></li><li><a href="reviews.html">Reviews</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Visit</a></li></ul></nav>
     </div>
   </header>
@@ -26,7 +32,7 @@
           <li>Sadhi Maggi — 25</li>
           <li>Masala — 35</li>
           <li>Vegetables — 45</li>
-          <li>Cheese Corn — 59 <span class="tag popular">Popular</span></li>
+          <li>🧀 Cheese Corn — 59 <span class="tag popular">Popular</span> <span class="tag badge">Freshly Prepared</span></li>
           <li>Tadka — 69</li>
           <li>Cheese — 69</li>
         </ul>
@@ -48,10 +54,10 @@
         <h2>MOMOS (10 pcs)</h2>
         <ul class="menu-list">
           <li>Veggie Steam — 80</li>
-          <li>Paneer Steam — 99</li>
-          <li>Cheese Corn Steam — 90</li>
+          <li>🧀 Paneer Steam — 99</li>
+          <li>🧀 Cheese Corn Steam — 90</li>
           <li>Veggie Fried — 90</li>
-          <li>Paneer Fried — 99</li>
+          <li>Paneer Fried — 99 <span class="tag popular">Popular</span></li>
           <li>Cheese Corn Fried — 99</li>
           <li>Veggie Kurkure — 110</li>
           <li>Paneer Kurkure — 120</li>
@@ -63,8 +69,8 @@
         <h2>QUICK BITE</h2>
         <ul class="menu-list">
           <li>French Fries — 69</li>
-          <li>Masala Fries — 79</li>
-          <li>Peri Peri Fries — 89</li>
+          <li>🌶️ Masala Fries — 79</li>
+          <li>🌶️ Peri Peri Fries — 89</li>
           <li>Cheese Fries — 99 <span class="tag popular">Popular</span></li>
         </ul>
       </div>
@@ -93,6 +99,21 @@
     </section>
 
   </main>
+
+  <!-- Menu structured data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Menu",
+    "name": "Hot Tea Menu",
+    "hasMenuSection": [
+      {"@type":"MenuSection","name":"Maggi","hasMenuItem":[{"@type":"MenuItem","name":"Cheese Corn","offers":{"@type":"Offer","price":"59","priceCurrency":"INR"}}]},
+      {"@type":"MenuSection","name":"Momos","hasMenuItem":[{"@type":"MenuItem","name":"Paneer Steam","offers":{"@type":"Offer","price":"99","priceCurrency":"INR"}}]},
+      {"@type":"MenuSection","name":"Mocktails","hasMenuItem":[{"@type":"MenuItem","name":"Strawberry Mojito","offers":{"@type":"Offer","price":"99","priceCurrency":"INR"}}]}
+    ]
+  }
+  </script>
+
   <footer class="site-footer">
     <div class="container footer-grid">
       <div>
@@ -111,5 +132,11 @@
     <div class="attribution">© <span id="year-2"></span> Hot Tea</div>
   </footer>
   <script src="js/main.js" defer></script>
+  <script src="js/scroll.js" defer></script>
+
+  <div class="mobile-cta" role="region" aria-label="Quick actions">
+    <a class="btn primary" href="tel:+911234567890">Call</a>
+    <a class="btn secondary" href="https://wa.me/911234567890">WhatsApp</a>
+  </div>
 </body>
 </html>

@@ -9,7 +9,7 @@
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>
-<header class="site-header"><div class="container nav-row"><a class="logo" href="index.html">Hot Tea</a><nav class="primary-nav"><ul><li><a href="menu.html">Menu</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Visit</a></li></ul></nav></div></header>
+<header class="site-header"><div class="container nav-row"><div class="logo-group"><a class="logo" href="index.html"><img src="assets/images/logo.svg" alt="Hot Tea — Cozy Cafe" width="168" height="56"><span class="sr-only">Hot Tea</span></a><div class="micro-hygiene muted">Hygiene First</div></div><nav class="primary-nav"><ul><li><a href="menu.html">Menu</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Visit</a></li></ul></nav></div></header>
 <main id="main-content" class="container">
   <h1>What Our Customers Say</h1>
   <p class="muted">Real feedback highlighting taste, hygiene, and service.</p>
@@ -25,13 +25,33 @@
   <section class="reviews-integration">
     <h2>Live reviews</h2>
     <p class="muted">The live reviews below (when available) are sanitized and shown via the serverless endpoint.</p>
-    <div id="live-reviews" class="review-cards"></div>
+    <div id="live-reviews" class="review-cards" aria-live="polite"></div>
   </section>
 
   <!-- client script to fetch sanitized reviews from serverless function -->
   <script src="js/reviews-client.js" defer></script>
+  <script src="js/scroll.js" defer></script>
+
+  <!-- Structured data: sample reviews (replace with real data when available) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"CollectionPage",
+    "mainEntity": {
+      "@type":"Review",
+      "author":{"@type":"Person","name":"Priya"},
+      "reviewBody":"Best food and very hygienic food",
+      "reviewRating":{"@type":"Rating","ratingValue":"5"}
+    }
+  }
+  </script>
 </main>
 <footer class="site-footer"><div class="container">© <span id="year-3"></span> Hot Tea</div></footer>
 <script src="js/main.js" defer></script>
+
+<div class="mobile-cta" role="region" aria-label="Quick actions">
+  <a class="btn primary" href="tel:+911234567890">Call</a>
+  <a class="btn secondary" href="https://wa.me/911234567890">WhatsApp</a>
+</div>
 </body>
 </html>
