@@ -15,7 +15,9 @@ function openNav(navToggle, nav){
 
 document.addEventListener('DOMContentLoaded', function(){
   const navToggle = document.getElementById('nav-toggle');
-  const nav = document.getElementById('primary-navigation');
+  // prefer the id, but fall back to the primary-nav element and ensure an id exists
+  let nav = document.getElementById('primary-navigation');
+  if(!nav){ nav = document.querySelector('.primary-nav'); if(nav) nav.id = 'primary-navigation'; }
   if(nav){ nav.setAttribute('aria-hidden','true'); }
 
   if(navToggle){
@@ -43,3 +45,20 @@ document.addEventListener('DOMContentLoaded', function(){
   const y = new Date().getFullYear();
   ['year','year-2','year-3','year-4','year-5'].forEach(id=>{const el=document.getElementById(id); if(el) el.textContent=y});
 });
+
+// prevent background scroll when nav is open
+function openNav(navToggle, nav){
+  if(!navToggle || !nav) return;
+  navToggle.setAttribute('aria-expanded','true');
+  nav.classList.add('open');
+  nav.setAttribute('aria-hidden','false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeNav(navToggle, nav){
+  if(!navToggle || !nav) return;
+  navToggle.setAttribute('aria-expanded','false');
+  nav.classList.remove('open');
+  nav.setAttribute('aria-hidden','true');
+  document.body.style.overflow = '';
+}
