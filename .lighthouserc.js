@@ -1,10 +1,10 @@
 module.exports = {
   ci: {
     collect: {
-      staticDistDir: './site',
+      staticDistDir: './site/dist',
       url: ['http://127.0.0.1:8080'],
       numberOfRuns: 1,
-      startServerCommand: 'npx http-server ./site -p 8080 -c-1'
+      startServerCommand: 'npx http-server ./site/dist -p 8080 -c-1'
     },
     assert: {
       assertions: {

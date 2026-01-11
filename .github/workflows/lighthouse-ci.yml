@@ -20,8 +20,14 @@ jobs:
         with:
           node-version: '18'
 
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        run: npm run build
+
       - name: Start static server
-        run: npx http-server ./site -p 8080 -c-1 &
+        run: npx http-server ./dist -p 8080 -c-1 &
 
       - name: Wait for server
         run: npx wait-on http://127.0.0.1:8080

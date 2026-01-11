@@ -9,14 +9,17 @@
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>
-<header class="site-header"><div class="container nav-row"><div class="logo-group"><a class="logo" href="index.html"><img src="assets/images/logo.svg" alt="Hot Tea — Cozy Cafe" width="168" height="56"><span class="sr-only">Hot Tea</span></a><div class="micro-hygiene muted">Hygiene First</div></div><nav class="primary-nav"><ul><li><a href="menu.html">Menu</a></li><li><a href="reviews.html">Reviews</a></li><li><a href="about.html">About</a></li></ul></nav></div></header>
+<header class="site-header"><div class="container nav-row"><div class="logo-group"><a class="logo" href="index.html"><img src="assets/images/logo.png" alt="Hot Tea — Cozy Cafe" width="168" height="56" onerror="this.onerror=null;this.src='assets/images/logo.svg'"><span class="sr-only">Hot Tea</span></a><div class="micro-hygiene muted">Hygiene First</div></div><button id="nav-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Open menu">☰</button><nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation"><ul><li><a href="menu.html">Menu</a></li><li><a href="reviews.html">Reviews</a></li><li><a href="about.html">About</a></li></ul></nav></div></header>
 <main id="main-content" class="container contact">
   <h1>Plan Your Visit</h1>
   <p class="muted">Perfect for quick bites, hangouts, and casual meals.</p>
   <p class="muted">Address: Replace this with the exact shop address</p>
   <div class="contact-grid">
-    <div class="map-embed">
-      <iframe title="Hot Tea Location" src="https://www.google.com/maps/embed?pb=!1m18!2m3" loading="lazy"></iframe>
+    <div class="map-embed" data-map-src="https://www.google.com/maps/embed?pb=!1m18!2m3">
+      <button class="btn secondary load-map" type="button" aria-label="Load map">Load map</button>
+      <noscript>
+        <iframe title="Hot Tea Location" src="https://www.google.com/maps/embed?pb=!1m18!2m3" loading="lazy"></iframe>
+      </noscript>
     </div>
     <div>
       <h2>Opening hours</h2>
