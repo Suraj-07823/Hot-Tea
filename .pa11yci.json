@@ -1,0 +1,13 @@
+{
+  "defaults": {
+    "standard": "WCAG2AA",
+    "timeout": 30000
+  },
+  "urls": [
+    "http://127.0.0.1:8080/",
+    "http://127.0.0.1:8080/menu.html",
+    "http://127.0.0.1:8080/reviews.html",
+    "http://127.0.0.1:8080/about.html",
+    "http://127.0.0.1:8080/contact.html"
+  ]
+}

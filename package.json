@@ -1,0 +1,10 @@
+{
+  "name": "hot-tea-site-local",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "npx http-server ./ -p 8080 -c-1",
+    "check:pa11y": "npx pa11y-ci",
+    "check:lhci": "npx @lhci/cli autorun --upload.target=temporary-public-storage"
+  }
+}
