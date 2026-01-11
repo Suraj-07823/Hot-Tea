@@ -15,16 +15,42 @@ body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helveti
 .logo-group{display:flex;flex-direction:column;align-items:flex-start}
 .logo{display:inline-block;line-height:1;text-decoration:none}
 .logo img{display:block;height:44px;width:auto}
+@media(min-width:760px){.logo img{height:52px}}
 .sr-only{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
 .micro-hygiene{font-size:.7rem;color:var(--muted);margin-top:2px}
-#nav-toggle{background:transparent;border:0;font-size:1.6rem;display:inline-flex;align-items:center;padding:.5rem;border-radius:12px;min-width:44px;min-height:44px}
-#nav-toggle[aria-expanded="true"]{background:rgba(139,94,60,0.06)}
+#nav-toggle{background:transparent;border:0;display:inline-flex;align-items:center;padding:.5rem;border-radius:12px;min-width:44px;min-height:44px}
+/* Animated burger icon */
+#nav-toggle .nav-icon{display:inline-block;position:relative;width:22px;height:18px}
+#nav-toggle .nav-icon span{position:absolute;left:0;right:0;height:2px;background:var(--accent);display:block;border-radius:2px;transition:transform .28s cubic-bezier(.2,.9,.2,1),opacity .18s linear}
+#nav-toggle .nav-icon span:nth-child(1){top:0}
+#nav-toggle .nav-icon span:nth-child(2){top:8px}
+#nav-toggle .nav-icon span:nth-child(3){top:16px}
+#nav-toggle.is-open .nav-icon span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+#nav-toggle.is-open .nav-icon span:nth-child(2){opacity:0}
+#nav-toggle.is-open .nav-icon span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+#nav-toggle[aria-expanded="true"]{background:rgba(139,94,60,0.04)}
 /* Mobile: hide primary nav by default, show when open */
 .primary-nav{display:none}
-.primary-nav.open{display:block;position:fixed;left:0;right:0;top:56px;bottom:0;background:var(--card);box-shadow:var(--shadow);padding:1rem 1rem 5rem;overflow:auto;border-radius:0;z-index:90}
-.primary-nav ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.75rem}
-.primary-nav a{text-decoration:none;color:inherit;padding:1rem .75rem;border-radius:8px;display:block;font-size:1.05rem}
-.primary-nav a:hover{background:rgba(139,94,60,0.06)}
+.primary-nav.open{display:block;position:fixed;left:8px;right:8px;top:64px;bottom:8px;background:rgba(255,255,255,0.96);box-shadow:var(--shadow);padding:1rem 1rem 5rem;overflow:auto;border-radius:12px;z-index:90;transform-origin:top center;animation:nav-open .28s ease forwards}
+@keyframes nav-open{0%{opacity:0;transform:scale(.98) translateY(-6px)}100%{opacity:1;transform:none}}
+.primary-nav ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.5rem}
+.primary-nav a{text-decoration:none;color:inherit;padding:.85rem .75rem;border-radius:8px;display:block;font-size:1.05rem;transition:transform .18s ease,background .12s ease}
+.primary-nav a:hover{background:rgba(139,94,60,0.06);transform:translateX(6px)}
+
+/* Glass hover effect for cards */
+.card, .menu-card, .review-card{transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
+.card:hover, .menu-card:hover, .review-card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(139,94,60,0.12);background:linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.72));backdrop-filter:blur(6px)}
+
+/* Hover & focus for buttons */
+.btn{transition:transform .12s ease,box-shadow .12s ease}
+.btn:hover{transform:translateY(-3px);box-shadow:0 8px 18px rgba(0,0,0,0.06)}
+
+/* Menu item image */
+.menu-card img{width:100%;height:140px;object-fit:cover;border-radius:8px;margin-bottom:.6rem}
+.menu-card .menu-actions{display:flex;gap:.5rem;align-items:center;margin-top:.6rem}
+.menu-card .menu-price{font-weight:700;color:var(--accent);margin-left:auto}
+.menu-card .order-btn{margin-left:auto}
+
 
 /* Prevent sticky CTA overlapping content on small screens */
 @media(max-width:759px){
@@ -90,6 +116,13 @@ body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helveti
 .mobile-cta .btn.primary{background:var(--accent);color:#fff}
 .mobile-cta .btn.secondary{background:var(--accent-2);color:#fff}
 @media(min-width:760px){.mobile-cta{display:none}}
+
+/* Install button (hidden by default) */
+.install-btn{display:none;padding:.45rem .7rem;border-radius:8px;border:2px solid rgba(139,94,60,0.08);background:transparent;color:var(--accent);font-weight:700}
+.install-btn.show{display:inline-block}
+
+/* Small screen header tweaks when install button present */
+.header-actions{display:flex;align-items:center;gap:.5rem}
 
 /* Scroll-in animations */
 .animate-on-scroll{opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease}

@@ -10,6 +10,8 @@ function openNav(navToggle, nav){
   navToggle.setAttribute('aria-expanded','true');
   nav.classList.add('open');
   nav.setAttribute('aria-hidden','false');
+  // animate burger
+  navToggle.classList.add('is-open');
   // focus the first link inside the mobile nav for keyboard users
   const firstLink = nav.querySelector('a'); if(firstLink) firstLink.focus();
   document.body.style.overflow = 'hidden';
@@ -20,6 +22,8 @@ function closeNav(navToggle, nav){
   navToggle.setAttribute('aria-expanded','false');
   nav.classList.remove('open');
   nav.setAttribute('aria-hidden','true');
+  // animate burger
+  navToggle.classList.remove('is-open');
   // remove inline top style added when opening
   nav.style.top = '';
   document.body.style.overflow = '';
@@ -38,6 +42,8 @@ document.addEventListener('DOMContentLoaded', function(){
     navToggle.addEventListener('click', function(){
       const expanded = this.getAttribute('aria-expanded') === 'true';
       if(expanded){ closeNav(navToggle, nav); } else { openNav(navToggle, nav); }
+      // animate the burger icon
+      this.classList.toggle('is-open', !expanded);
     });
   }
 
@@ -63,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function(){
     }
   });
 
-  // Map lazy-loader: inject iframe on user click or when in-view
+  // Map loader (deprecated): removed in favour of direct directions link - kept for compatibility
   function loadMap(placeholder){
     if(!placeholder) return;
     const src = placeholder.getAttribute('data-map-src');
@@ -73,7 +79,6 @@ document.addEventListener('DOMContentLoaded', function(){
     iframe.setAttribute('src',src);
     iframe.setAttribute('loading','lazy');
     iframe.style.width='100%'; iframe.style.height='240px'; iframe.style.border='0'; iframe.style.borderRadius='8px';
-    // clear children and append
     placeholder.innerHTML='';
     placeholder.appendChild(iframe);
   }
@@ -83,6 +88,29 @@ document.addEventListener('DOMContentLoaded', function(){
       loadMap(container);
     });
   });
+
+  // PWA install prompt handling
+  let deferredInstallPrompt = null;
+  const installBtn = document.getElementById('install-btn');
+  window.addEventListener('beforeinstallprompt', (e)=>{
+    e.preventDefault();
+    deferredInstallPrompt = e;
+    if(installBtn){ installBtn.classList.add('show'); installBtn.removeAttribute('aria-hidden'); }
+  });
+  if(installBtn){
+    installBtn.addEventListener('click', async function(){
+      if(!deferredInstallPrompt) return;
+      deferredInstallPrompt.prompt();
+      const choice = await deferredInstallPrompt.userChoice;
+      // hide button afterwards
+      installBtn.classList.remove('show'); installBtn.setAttribute('aria-hidden','true');
+      deferredInstallPrompt = null;
+    });
+  }
+  window.addEventListener('appinstalled', ()=>{
+    if(installBtn){ installBtn.classList.remove('show'); installBtn.setAttribute('aria-hidden','true'); }
+  });
+
   /* Optional: auto-load maps for elements that opt-in to automatic loading
      Add `data-auto-load="true"` to a `.map-embed` if you want it to load when scrolled into view. */
   if('IntersectionObserver' in window){
@@ -95,6 +123,27 @@ document.addEventListener('DOMContentLoaded', function(){
       });
     },{rootMargin:'200px'});
     document.querySelectorAll('.map-embed').forEach(el=>io.observe(el));
+  }
+
+  // Order via WhatsApp buttons
+  document.querySelectorAll('.order-btn').forEach(btn=>{
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      const section = this.getAttribute('data-section') || 'Hot Tea';
+      const message = `Hi, I'd like to order from ${section}. Please share availability and pickup/delivery info.`;
+      const phone = '911234567890';
+      const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+    });
+  });
+
+  // Register service worker (PWA)
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.register('/sw.js').then(()=>{
+      // console.log('Service Worker registered');
+    }).catch(()=>{
+      // console.warn('Service Worker registration failed');
+    });
   }
 
   // populate year

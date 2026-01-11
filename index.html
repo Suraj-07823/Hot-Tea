@@ -11,6 +11,11 @@
   <meta property="og:title" content="Hot Tea — Cozy Café & Hygienic Food">
   <meta property="og:description" content="Hot Tea: Great taste, clean kitchen, friendly service. Visit us for tea, coffee, pizzas & snacks.">
   <meta property="og:type" content="website">
+  <link rel="icon" href="assets/images/logo.png">
+  <link rel="apple-touch-icon" href="assets/images/logo.png">
+  <meta name="theme-color" content="#8B5E3C">
+  <!-- Installable PWA manifest (added when converting to PWA) -->
+  <link rel="manifest" href="/manifest.json">
   <!-- Structured data (LocalBusiness) -->
   <script type="application/ld+json">
   {
@@ -41,7 +46,10 @@
         </a>
         <!-- <div class="micro-hygiene muted">Hygiene First</div> -->
       </div>
-      <button id="nav-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Open menu">☰</button>
+      <div class="header-actions">
+        <button id="install-btn" class="install-btn" aria-hidden="true">Install App</button>
+        <button id="nav-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Open menu"><span class="nav-icon" aria-hidden="true"><span></span><span></span><span></span></span></button>
+      </div>
       <nav id="primary-navigation" class="primary-nav" role="navigation" aria-label="Primary navigation">
         <ul>
           <li><a href="menu.html">Menu</a></li>
@@ -130,16 +138,11 @@
 
     <section class="location container animate-on-scroll" aria-label="Location">
       <h2>Plan Your Visit</h2>
-      <div class="map-embed" data-map-src="https://www.google.com/maps/embed?pb=!1m18!2m3">
-        <!-- Lazy-load the Google Maps iframe only on user intent (avoids interstitials during automated audits) -->
-        <button class="btn secondary load-map" type="button" aria-label="Load map">Load map</button>
-        <noscript>
-          <!-- Fallback for users without JS -->
-          <iframe title="Hot Tea Location" src="https://www.google.com/maps/embed?pb=!1m18!2m3" loading="lazy"></iframe>
-        </noscript>
+      <!-- Map removed — use direct Google Maps link to improve privacy & avoid embed interstitials -->
+      <div class="card">
+        <p class="muted">Easy to find. Perfect for quick bites, hangouts, and casual meals.</p>
+        <p><a class="btn secondary" href="https://maps.app.goo.gl/9RtJTdBa1uipvFvq9" target="_blank" rel="noopener noreferrer">View / Get Directions</a></p>
       </div>
-      <p class="muted">Easy to find. Perfect for quick bites, hangouts, and casual meals.</p>
-      <p><a href="contact.html" class="btn secondary">Visit / Get Directions</a></p>
     </section>
 
   </main>
