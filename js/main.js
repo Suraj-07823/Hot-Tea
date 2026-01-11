@@ -24,7 +24,15 @@ document.addEventListener('DOMContentLoaded', function(){
   if(navToggle){
     navToggle.addEventListener('click', function(){
       const expanded = this.getAttribute('aria-expanded') === 'true';
-      if(expanded){ closeNav(navToggle, nav); } else { openNav(navToggle, nav); }
+      if(expanded){
+        closeNav(navToggle, nav);
+        this.classList.remove('is-open');
+        this.setAttribute('aria-label','Open menu');
+      } else {
+        openNav(navToggle, nav);
+        this.classList.add('is-open');
+        this.setAttribute('aria-label','Close menu');
+      }
     });
   }
 

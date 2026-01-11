@@ -116,8 +116,8 @@ textarea{min-height:120px}
 @media(min-width:760px){.mobile-cta{display:none}}
 
 /* Install button (hidden by default) */
-.install-btn{display:none;padding:.45rem .7rem;border-radius:8px;border:2px solid rgba(139,94,60,0.08);background:transparent;color:var(--accent);font-weight:700}
-.install-btn.show{display:inline-block}
+.install-btn{display:inline-flex;align-items:center;gap:.4rem;padding:.45rem .7rem;border-radius:8px;border:2px solid rgba(139,94,60,0.08);background:transparent;color:var(--accent);font-weight:700}
+.install-btn[aria-hidden="true"]{display:none}
 
 /* Small screen header tweaks when install button present */
 .header-actions{display:flex;align-items:center;gap:.5rem}
