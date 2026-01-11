@@ -6,7 +6,7 @@
 *{box-sizing:border-box}
 html,body{height:100%}
 body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial; font-size:var(--fs-regular); color:#2a2a2a; background:linear-gradient(180deg,#fff #fff 60%, #fff8f1);}
-.container{max-width:var(--max-width);margin:0 auto;padding:1.25rem}
+.container{max-width:var(--max-width);margin:0 auto;padding:1rem} /* slightly tightened padding for consistent alignment */
 /* Skip link for keyboard users */
 .skip-link{position:absolute;left:0;top:0;padding:.5rem 1rem;background:#fff;border:2px solid var(--accent);color:var(--accent);transform:translateY(-120%);transition:transform .18s ease;z-index:100}
 .skip-link:focus{transform:translateY(0)}
@@ -18,49 +18,18 @@ body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helveti
 @media(min-width:760px){.logo img{height:52px}}
 .sr-only{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
 .micro-hygiene{font-size:.7rem;color:var(--muted);margin-top:2px}
-#nav-toggle{background:transparent;border:0;display:inline-flex;align-items:center;padding:.5rem;border-radius:12px;min-width:44px;min-height:44px}
-/* Animated burger icon */
-#nav-toggle .nav-icon{display:inline-block;position:relative;width:22px;height:18px}
-#nav-toggle .nav-icon span{position:absolute;left:0;right:0;height:2px;background:var(--accent);display:block;border-radius:2px;transition:transform .28s cubic-bezier(.2,.9,.2,1),opacity .18s linear}
-#nav-toggle .nav-icon span:nth-child(1){top:0}
-#nav-toggle .nav-icon span:nth-child(2){top:8px}
-#nav-toggle .nav-icon span:nth-child(3){top:16px}
-#nav-toggle.is-open .nav-icon span:nth-child(1){transform:translateY(8px) rotate(45deg)}
-#nav-toggle.is-open .nav-icon span:nth-child(2){opacity:0}
-#nav-toggle.is-open .nav-icon span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
-#nav-toggle[aria-expanded="true"]{background:rgba(139,94,60,0.04)}
+#nav-toggle{background:transparent;border:0;font-size:1.6rem;display:inline-flex;align-items:center;padding:.25rem;border-radius:8px}
+#nav-toggle[aria-expanded="true"]{background:rgba(139,94,60,0.06)}
 /* Mobile: hide primary nav by default, show when open */
 .primary-nav{display:none}
 .primary-nav.open{display:block;position:fixed;left:8px;right:8px;top:64px;bottom:8px;background:rgba(255,255,255,0.96);box-shadow:var(--shadow);padding:1rem 1rem 5rem;overflow:auto;border-radius:12px;z-index:90;transform-origin:top center;animation:nav-open .28s ease forwards}
 @keyframes nav-open{0%{opacity:0;transform:scale(.98) translateY(-6px)}100%{opacity:1;transform:none}}
 .primary-nav ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.5rem}
-.primary-nav a{text-decoration:none;color:inherit;padding:.85rem .75rem;border-radius:8px;display:block;font-size:1.05rem;transition:transform .18s ease,background .12s ease}
-.primary-nav a:hover{background:rgba(139,94,60,0.06);transform:translateX(6px)}
-
-/* Glass hover effect for cards */
-.card, .menu-card, .review-card{transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
-.card:hover, .menu-card:hover, .review-card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(139,94,60,0.12);background:linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.72));backdrop-filter:blur(6px)}
-
-/* Hover & focus for buttons */
-.btn{transition:transform .12s ease,box-shadow .12s ease}
-.btn:hover{transform:translateY(-3px);box-shadow:0 8px 18px rgba(0,0,0,0.06)}
-
-/* Menu item image */
-.menu-card img{width:100%;height:140px;object-fit:cover;border-radius:8px;margin-bottom:.6rem}
-.menu-card .menu-actions{display:flex;gap:.5rem;align-items:center;margin-top:.6rem}
-.menu-card .menu-price{font-weight:700;color:var(--accent);margin-left:auto}
-.menu-card .order-btn{margin-left:auto}
-
-
-/* Prevent sticky CTA overlapping content on small screens */
-@media(max-width:759px){
-  body{padding-bottom:84px}
-}
-@media(min-width:760px){
-  body{padding-bottom:0}
-}
+.primary-nav a{text-decoration:none;color:inherit;padding:.6rem .75rem;border-radius:8px;display:block}
+.primary-nav a:hover{background:rgba(139,94,60,0.06)}
 .hero{background:linear-gradient(180deg, rgba(139,94,60,0.06), transparent);padding:2.2rem 0;border-bottom:1px solid rgba(0,0,0,.03)}
 .hero h1{margin:0 0 .5rem;font-size:clamp(1.4rem,4.5vw,2.2rem);line-height:1.15;color:var(--accent)}
+@media(min-width:760px){.hero{padding:3.2rem 0}}
 .hero p{margin:0 0 1rem;color:var(--muted)}
 /* Stack CTAs on small screens for easy tapping */
 .cta-row{display:flex;flex-direction:column;gap:.6rem}
@@ -79,6 +48,9 @@ body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helveti
 /* Gallery grid: 1 column mobile -> 2 -> 3 columns */
 .grid{display:grid;grid-template-columns:repeat(1,1fr);gap:.5rem;margin-top:.5rem}
 .grid img{width:100%;height:120px;object-fit:cover;border-radius:8px;display:block}
+
+/* Images: responsive */
+img{max-width:100%;height:auto;display:block}
 .map-embed iframe{width:100%;height:240px;border:0;border-radius:8px}
 .site-footer{margin-top:2rem;padding:1.25rem 0;background:transparent;color:var(--muted)}
 .footer-grid{display:flex;gap:1rem;flex-wrap:wrap;align-items:center;justify-content:space-between}
@@ -92,6 +64,17 @@ body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helveti
 .contact-grid{display:grid;grid-template-columns:1fr;gap:1rem}
 /* Small utility improvements */
 .btn.ghost{background:transparent;border:1px solid rgba(0,0,0,.06)}
+
+/* Forms */
+.form-grid{display:grid;grid-template-columns:1fr;gap:.75rem}
+label{display:block;font-weight:600;margin-bottom:.35rem}
+input[type="text"],input[type="email"],input[type="tel"],select,textarea{width:100%;padding:.6rem;border-radius:8px;border:1px solid rgba(0,0,0,.06);background:var(--card);box-shadow:inset 0 1px 0 rgba(0,0,0,.02);font-size:1rem}
+textarea{min-height:120px}
+.form-actions{display:flex;gap:.5rem;align-items:center;margin-top:.6rem}
+.form-status{margin-left:.5rem;color:var(--muted);font-weight:600}
+.form-success{color:green}
+.form-error{color:crimson}
+
 /* Focus-visible for keyboard users only */
 :focus:not(:focus-visible){outline:none}
 /* Steam / warmth animation for hero */
@@ -129,9 +112,11 @@ body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helveti
 .animate-on-scroll.in-view{opacity:1;transform:none}
 
 /* Menu grid and cards */
-.menu-grid{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:1rem}
-.menu-card{background:var(--card);padding:1rem;border-radius:var(--radius);box-shadow:var(--shadow)}
-.menu-card h2{margin:0 0 .5rem;font-size:1.05rem;color:var(--accent)}
+.menu-grid{display:grid;grid-template-columns:1fr;gap:.85rem;margin-top:.75rem}
+.menu-card{background:var(--card);padding:.9rem;border-radius:var(--radius);box-shadow:var(--shadow);display:flex;flex-direction:column}
+.menu-card img{width:100%;height:140px;object-fit:cover;border-radius:8px;margin-bottom:.6rem}
+.menu-card h2{margin:.4rem 0 .45rem;font-size:1.05rem;color:var(--accent)}
+.menu-actions{display:flex;gap:.5rem;align-items:center;margin-top:.6rem}
 .menu-card .menu-list{padding-left:0}
 .menu-card .tag.popular{background:var(--accent);color:#fff;padding:.15rem .5rem;border-radius:999px;font-size:.75rem;margin-left:.5rem}
 .values{margin-top:1rem;padding:.6rem 0;color:var(--muted);font-weight:600;display:flex;gap:.5rem;align-items:center}

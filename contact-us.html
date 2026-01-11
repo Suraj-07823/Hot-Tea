@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Contact Us — Hot Tea</title>
+  <meta name="description" content="Get in touch with Hot Tea — email, call, or send feedback.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="assets/images/logo.png">
+  <meta name="theme-color" content="#8B5E3C">
+  <link rel="manifest" href="/manifest.json">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header">
+    <div class="container nav-row">
+      <div class="logo-group">
+        <a class="logo" href="index.html"><img src="assets/images/logo.png" alt="Hot Tea — Cozy Cafe" width="168" height="56"></a>
+      </div>
+      <div class="header-actions">
+        <button id="install-btn" class="install-btn" aria-hidden="true">Install App</button>
+        <button id="nav-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Open menu"><span class="nav-icon" aria-hidden="true"><span></span><span></span><span></span></span></button>
+      </div>
+      <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Visit</a></li>
+          <li><a href="contact-us.html">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="container contact">
+    <h1>Contact Us</h1>
+    <p class="muted">Questions, feedback, or suggestions — we want to hear from you.</p>
+
+    <section class="card contact-details">
+      <h2>Get in touch</h2>
+      <p><strong>Phone:</strong> <a href="tel:+911234567890">+91 12345 67890</a></p>
+      <p><strong>Email:</strong> <a href="mailto:contact@hottea.in">contact@hottea.in</a></p>
+      <p><strong>Address:</strong> Replace with your shop address</p>
+      <p><strong>Hours:</strong> Mon–Sun: 8:00 AM – 10:00 PM</p>
+    </section>
+
+    <section class="card feedback" aria-label="Feedback form">
+      <h2>Send Feedback</h2>
+      <form id="feedback-form" name="feedback" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="feedback">
+        <p class="sr-only"><label>Don't fill this out if you're human: <input name="bot-field"></label></p>
+
+        <div class="form-grid">
+          <label for="f-name">Name <span aria-hidden="true">*</span>
+            <input id="f-name" name="name" type="text" required>
+          </label>
+          <label for="f-email">Email <span aria-hidden="true">*</span>
+            <input id="f-email" name="email" type="email" required>
+          </label>
+          <label for="f-phone">Phone
+            <input id="f-phone" name="phone" type="tel">
+          </label>
+          <label for="f-rating">Rating
+            <select id="f-rating" name="rating">
+              <option value="5">5 — Excellent</option>
+              <option value="4">4 — Very good</option>
+              <option value="3">3 — Good</option>
+              <option value="2">2 — Fair</option>
+              <option value="1">1 — Poor</option>
+            </select>
+          </label>
+        </div>
+
+        <label for="f-message">Message <span aria-hidden="true">*</span>
+          <textarea id="f-message" name="message" rows="6" required></textarea>
+        </label>
+
+        <div class="form-actions">
+          <button class="btn primary" type="submit">Send Feedback</button>
+          <span class="form-status" aria-live="polite"></span>
+        </div>
+      </form>
+      <noscript>
+        <p class="muted">If JavaScript is disabled, please send your feedback to <a href="mailto:contact@hottea.in">contact@hottea.in</a>.</p>
+      </noscript>
+    </section>
+
+  </main>
+
+  <footer class="site-footer"><div class="container">© <span id="year-6"></span> Hot Tea</div></footer>
+
+  <script src="js/scroll.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>
