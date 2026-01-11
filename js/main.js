@@ -86,4 +86,30 @@ document.addEventListener('DOMContentLoaded', function(){
   if('serviceWorker' in navigator){
     navigator.serviceWorker.register('/sw.js').catch(()=>{});
   }
+
+  // Make CTA buttons explicitly navigate (helps in some mobile contexts)
+  document.querySelectorAll('.cta-row a, .reviews-cta a').forEach(a=>{
+    a.addEventListener('click', function(e){
+      // ensure navigation occurs even if other handlers interfere
+      const href = this.getAttribute('href');
+      if(!href) return;
+      // allow normal behaviour for external links
+      if(href.startsWith('http')) return; 
+      e.preventDefault();
+      window.location.href = href;
+    });
+  });
+
+  // Add lightweight click/keyboard animation to menu titles and reviewer names
+  function animateTap(el){
+    if(!el) return;
+    el.classList.add('is-active');
+    setTimeout(()=>el.classList.remove('is-active'),180);
+  }
+  document.querySelectorAll('.menu-card h2, .reviewer').forEach(el=>{
+    el.setAttribute('tabindex', '0'); // make focusable
+    el.addEventListener('click', ()=>animateTap(el));
+    el.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' ') { e.preventDefault(); animateTap(el); } });
+  });
+
 });
