@@ -6,6 +6,9 @@
   <title>Menu — Hot Tea</title>
   <meta name="description" content="Menu: Tea, Coffee, Pizzas and Snacks at Hot Tea — fresh, hygienic, and affordable.">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="assets/images/logo.png">
+  <meta name="theme-color" content="#8B5E3C">
+  <link rel="manifest" href="/manifest.json">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -18,7 +21,11 @@
         </a>
         <div class="micro-hygiene muted">Hygiene First</div>
       </div>
-      <nav class="primary-nav"><ul><li><a href="index.html">Home</a></li><li><a href="reviews.html">Reviews</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Visit</a></li></ul></nav>
+      <div class="header-actions">
+        <button id="install-btn" class="install-btn" aria-hidden="true">Install App</button>
+        <button id="nav-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Open menu"><span class="nav-icon" aria-hidden="true"><span></span><span></span><span></span></span></button>
+      </div>
+      <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation"><ul><li><a href="index.html">Home</a></li><li><a href="reviews.html">Reviews</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Visit</a></li></ul></nav>
     </div>
   </header>
   <main id="main-content" class="container">
@@ -26,7 +33,8 @@
     <p class="muted">All items are freshly prepared using quality ingredients.</p>
 
     <section class="menu-grid">
-      <div class="menu-card">
+      <div class="menu-card" data-section="MAGGI">
+        <img src="assets/images/food-closeup.svg" alt="Maggi varieties" loading="lazy" width="480" height="240">
         <h2>MAGGI</h2>
         <ul class="menu-list">
           <li>Sadhi Maggi — 25</li>
@@ -36,9 +44,11 @@
           <li>Tadka — 69</li>
           <li>Cheese — 69</li>
         </ul>
+        <div class="menu-actions"><a class="btn primary order-btn" href="#" data-section="MAGGI" title="Order Cheese Corn from MAGGI">Order via WhatsApp</a></div>
       </div>
 
-      <div class="menu-card">
+      <div class="menu-card" data-section="PENNE PASTA">
+        <img src="assets/images/cafe-interior.svg" alt="Penne pasta" loading="lazy" width="480" height="240">
         <h2>PENNE PASTA</h2>
         <ul class="menu-list">
           <li>Masala Pasta — 89</li>
@@ -48,9 +58,11 @@
           <li>White Sauce — 169</li>
           <li>Pink Sauce — 179</li>
         </ul>
+        <div class="menu-actions"><a class="btn primary order-btn" href="#" data-section="PENNE PASTA" title="Order Penne Pasta">Order via WhatsApp</a></div>
       </div>
 
-      <div class="menu-card">
+      <div class="menu-card" data-section="MOMOS">
+        <img src="assets/images/kitchen.svg" alt="Momos" loading="lazy" width="480" height="240">
         <h2>MOMOS (10 pcs)</h2>
         <ul class="menu-list">
           <li>Veggie Steam — 80</li>
@@ -63,9 +75,11 @@
           <li>Paneer Kurkure — 120</li>
           <li>Cheese Corn Kurkure — 110</li>
         </ul>
+        <div class="menu-actions"><a class="btn primary order-btn" href="#" data-section="MOMOS" title="Order Momos">Order via WhatsApp</a></div>
       </div>
 
-      <div class="menu-card">
+      <div class="menu-card" data-section="QUICK BITE">
+        <img src="assets/images/food-closeup.svg" alt="Quick bites" loading="lazy" width="480" height="240">
         <h2>QUICK BITE</h2>
         <ul class="menu-list">
           <li>French Fries — 69</li>
@@ -73,9 +87,11 @@
           <li>🌶️ Peri Peri Fries — 89</li>
           <li>Cheese Fries — 99 <span class="tag popular">Popular</span></li>
         </ul>
+        <div class="menu-actions"><a class="btn primary order-btn" href="#" data-section="QUICK BITE" title="Order Quick Bite">Order via WhatsApp</a></div>
       </div>
 
-      <div class="menu-card">
+      <div class="menu-card" data-section="MOCKTAILS">
+        <img src="assets/images/cafe-interior.svg" alt="Mocktails" loading="lazy" width="480" height="240">
         <h2>MOCKTAILS</h2>
         <ul class="menu-list">
           <li>Strawberry Mojito — 99 <span class="tag popular">Popular</span></li>
@@ -84,9 +100,11 @@
           <li>Kiwi Mojito — 139</li>
           <li>Blue Lagoon — 129</li>
         </ul>
+        <div class="menu-actions"><a class="btn primary order-btn" href="#" data-section="MOCKTAILS" title="Order Mocktails">Order via WhatsApp</a></div>
       </div>
 
-      <div class="menu-card">
+      <div class="menu-card" data-section="ADD ONS">
+        <img src="assets/images/food-closeup.svg" alt="Add ons" loading="lazy" width="480" height="240">
         <h2>ADD ONS</h2>
         <ul class="menu-list">
           <li>Pav — 10</li>
@@ -94,6 +112,7 @@
           <li>Mayo — 15</li>
           <li>Chocolate Sauce — 10</li>
         </ul>
+        <div class="menu-actions"><a class="btn primary order-btn" href="#" data-section="ADD ONS" title="Order Add Ons">Order via WhatsApp</a></div>
       </div>
 
     </section>

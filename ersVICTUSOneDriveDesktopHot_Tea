@@ -1,0 +1,35 @@
+[33mcommit bbc51a42664147bb735d202d6585e0b20d56f7fa[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Suraj Vishwakarma <vishwakarmasiraj2004@gmail.com>
+Date:   Fri Jan 9 09:45:51 2026 +0530
+
+    Work on responsiveness of the project
+
+[33mcommit 5a277f9cef2f90cb3a49a5c3dab31548550dd1f2[m
+Author: Suraj Vishwakarma <vishwakarmasiraj2004@gmail.com>
+Date:   Fri Jan 9 00:29:38 2026 +0530
+
+    .
+
+[33mcommit 55d8468c158cb7273ee3f7470c72608e7dff0da5[m
+Author: Suraj Vishwakarma <vishwakarmasiraj2004@gmail.com>
+Date:   Fri Jan 9 00:26:04 2026 +0530
+
+    updated logo and made some changes
+
+[33mcommit 8040189e4017afdeba579c27882800da1fa8d05b[m
+Author: Suraj Vishwakarma <vishwakarmasiraj2004@gmail.com>
+Date:   Thu Jan 8 21:29:04 2026 +0530
+
+    Updated home section and added scrolling effect
+
+[33mcommit cf2005f714e54e1daec90d2d0ec492c5cc6ea177[m
+Author: Suraj Vishwakarma <vishwakarmasiraj2004@gmail.com>
+Date:   Thu Jan 8 20:55:08 2026 +0530
+
+    Removed Sensitive info from Readme,md
+
+[33mcommit befc6fc2ebdd22564f7f97ee0f7256e8f3e7ca25[m
+Author: Suraj Vishwakarma <vishwakarmasiraj2004@gmail.com>
+Date:   Thu Jan 8 20:31:17 2026 +0530
+
+    made the skeleton of website

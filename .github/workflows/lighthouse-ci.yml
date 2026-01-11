@@ -1,0 +1,57 @@
+name: CI — Lighthouse & Accessibility
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  schedule:
+    - cron: '0 3 * * *' # nightly run at 03:00 UTC
+  workflow_dispatch:
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        run: npm run build
+
+      - name: Start static server
+        run: npx http-server ./dist -p 8080 -c-1 &
+
+      - name: Wait for server
+        run: npx wait-on http://127.0.0.1:8080
+
+      - name: Run pa11y (accessibility checks)
+        run: |
+          npx --yes pa11y-ci --reporter html --output site/reports/pa11y-report.html
+
+      - name: Run Lighthouse CI (collect + assert + upload)
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_TOKEN || '' }}
+        run: |
+          npx --yes @lhci/cli autorun --upload.target=temporary-public-storage
+
+      - name: Upload pa11y report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pa11y-report
+          path: site/reports/pa11y-report.html
+
+      - name: Upload Lighthouse reports (if created)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-reports
+          path: site/.lighthouseci/**

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Download App — Hot Tea</title>
+  <meta name="description" content="Download or install the Hot Tea app for quick ordering and directions.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="assets/images/logo.png">
+  <meta name="theme-color" content="#8B5E3C">
+  <link rel="manifest" href="/manifest.json">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header">
+    <div class="container nav-row">
+      <div class="logo-group">
+        <a class="logo" href="index.html"><img src="assets/images/logo.png" alt="Hot Tea — Cozy Cafe" width="168" height="56"></a>
+      </div>
+      <div class="header-actions">
+        <button id="install-btn" class="install-btn" aria-hidden="true">Install App</button>
+        <button id="nav-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Open menu"><span class="nav-icon" aria-hidden="true"><span></span><span></span><span></span></span></button>
+      </div>
+      <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation"><ul><li><a href="index.html">Home</a></li><li><a href="menu.html">Menu</a></li><li><a href="reviews.html">Reviews</a></li><li><a href="contact.html">Visit</a></li></ul></nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="container">
+    <h1>Download Hot Tea App</h1>
+    <p class="muted">Install the web app (PWA) for quick access, or download the Android app when available.</p>
+
+    <div class="card">
+      <h2>Install as Web App</h2>
+      <p>Tap the Install button in the header (or use your browser's Add to Home Screen).</p>
+    </div>
+
+    <div class="card">
+      <h2>Android (Play Store)</h2>
+      <p>We will publish on Google Play soon — the Play Store link will appear here when ready.</p>
+      <p><a class="btn secondary" id="play-link" href="#">Coming soon</a></p>
+    </div>
+
+    <div class="card">
+      <h2>Download APK</h2>
+      <p>If you prefer a direct download, we will provide an APK file with installation instructions.</p>
+      <p><a class="btn ghost" href="assets/downloads/hot-tea.apk" id="apk-link">Download APK</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer"><div class="container">© <span id="year-3"></span> Hot Tea</div></footer>
+
+  <script src="js/scroll.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>
