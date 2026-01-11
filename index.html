@@ -44,9 +44,12 @@
           <img src="assets/images/logo.png" alt="Hot Tea — Cozy Cafe" width="168" height="56" onerror="this.onerror=null;this.src='assets/images/logo.svg'">
           <span class="site-title">Hot Tea</span>
         </a>
-        <!-- <div class="micro-hygiene muted">Hygiene First</div> -->
+        <div class="micro-hygiene muted">Hygiene First</div>
       </div>
-      <button id="nav-toggle" aria-controls="primary-navigation" aria-expanded="false">☰</button>
+      <div class="header-actions">
+        <button id="install-btn" class="install-btn" aria-hidden="true">Install App</button>
+        <button id="nav-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Open menu"><span class="nav-icon" aria-hidden="true"><span></span><span></span><span></span></span></button>
+      </div>
       <nav id="primary-navigation" class="primary-nav" role="navigation">
         <ul>
           <li><a href="menu.html">Menu</a></li>
@@ -67,8 +70,9 @@
         <p class="lead">A cozy café serving delicious snacks, momos, pasta, mocktails, and more.</p>
         <p class="subtext muted">Affordable prices. Hygienic preparation. Consistent taste.</p>
         <div class="cta-row">
-          <a class="btn primary" href="menu.html">Explore Our Menu</a>
-          <a class="btn secondary" href="contact.html">Visit Hot Tea Today</a>
+          <a class="btn primary" href="tel:+911234567890">Call Now</a>
+          <a class="btn secondary" href="https://maps.app.goo.gl/9RtJTdBa1uipvFvq9" target="_blank" rel="noopener noreferrer">Get Directions</a>
+          <a class="btn tertiary" href="menu.html">View Menu</a>
         </div>
       </div>
     </section>
@@ -134,9 +138,9 @@
 
     <section class="location container animate-on-scroll" aria-label="Location">
       <h2>Plan Your Visit</h2>
-      <div class="map-embed">
-        <!-- Replace src with your Google Maps embed URL -->
-        <iframe title="Hot Tea Location" src="https://www.google.com/maps/embed?pb=!1m18!2m3" loading="lazy"></iframe>
+      <div class="card">
+        <p class="muted">Find us on Google Maps for directions and transit options. Tap the button below to open directions in your maps app.</p>
+        <p style="margin-top:.8rem"><a class="btn primary" href="https://maps.app.goo.gl/9RtJTdBa1uipvFvq9" target="_blank" rel="noopener noreferrer">Get Directions</a></p>
       </div>
     </section>
 
@@ -165,8 +169,9 @@
 
   <!-- Mobile sticky CTA -->
   <div class="mobile-cta" role="region" aria-label="Quick actions">
-    <a class="btn primary" href="tel:+911234567890">Call</a>
-    <a class="btn secondary" href="https://wa.me/911234567890">WhatsApp</a>
+    <a class="btn primary" href="tel:+911234567890">Call Now</a>
+    <a class="btn secondary" href="https://maps.app.goo.gl/9RtJTdBa1uipvFvq9" target="_blank" rel="noopener noreferrer">Get Directions</a>
+    <a class="btn tertiary" href="menu.html">View Menu</a>
   </div>
 </body>
 </html>

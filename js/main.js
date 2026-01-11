@@ -42,12 +42,20 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   });
 
-  // close mobile nav on link click
+  // close mobile nav on link click (only on small screens) and set active link
   if(nav){
     nav.addEventListener('click', function(e){
       if(e.target && e.target.matches('a')){
-        closeNav(navToggle, nav);
+        if(window.innerWidth < 760){ closeNav(navToggle, nav); }
+        // set active state
+        document.querySelectorAll('.primary-nav a').forEach(a=>a.classList.remove('active'));
+        e.target.classList.add('active');
       }
+    });
+    // mark the current page link as active on load
+    document.querySelectorAll('.primary-nav a').forEach(a=>{
+      const href = a.getAttribute('href');
+      if(href && location.pathname.endsWith(href)) a.classList.add('active');
     });
   }
 
@@ -111,5 +119,15 @@ document.addEventListener('DOMContentLoaded', function(){
     el.addEventListener('click', ()=>animateTap(el));
     el.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' ') { e.preventDefault(); animateTap(el); } });
   });
+
+  // Toggle .scrolled on header for subtle style changes when the page is scrolled
+  (function(){
+    const header = document.querySelector('.site-header');
+    if(!header) return;
+    let ticking = false;
+    function update(){ header.classList.toggle('scrolled', window.scrollY > 8); ticking = false; }
+    window.addEventListener('scroll', ()=>{ if(!ticking){ window.requestAnimationFrame(update); ticking = true; } });
+    update();
+  })();
 
 });
