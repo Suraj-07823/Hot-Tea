@@ -18,8 +18,30 @@ document.addEventListener('DOMContentLoaded', function(){
   // prefer the id, but fall back to the primary-nav element and ensure an id exists
   let nav = document.getElementById('primary-navigation');
   if(!nav){ nav = document.querySelector('.primary-nav'); if(nav) nav.id = 'primary-navigation'; }
-  function updateNavAria(){ if(!nav) return; const isHidden = window.getComputedStyle(nav).display === 'none'; nav.setAttribute('aria-hidden', isHidden ? 'true' : 'false'); }
+  function updateNavAria(){ if(!nav) return; const style = window.getComputedStyle(nav); const isHidden = style.display === 'none'; nav.setAttribute('aria-hidden', isHidden ? 'true' : 'false'); if(navToggle) navToggle.setAttribute('aria-hidden', isHidden ? 'false' : 'true'); }
   if(nav){ updateNavAria(); window.addEventListener('resize', updateNavAria); }
+
+  // Fail-safe: ensure the toggle is hidden on desktop and removed from keyboard order
+  function syncToggleWithViewport(){
+    if(!navToggle) return;
+    const isDesktop = window.innerWidth >= 760;
+    const menuLabel = document.querySelector('.menu-label');
+    if(isDesktop){
+      navToggle.classList.add('desktop-hidden');
+      navToggle.setAttribute('aria-hidden','true');
+      navToggle.setAttribute('tabindex','-1');
+      if(menuLabel) menuLabel.classList.add('desktop-hidden');
+      // ensure nav is visible for desktop
+      if(nav) nav.classList.remove('open');
+    } else {
+      navToggle.classList.remove('desktop-hidden');
+      navToggle.setAttribute('aria-hidden','false');
+      navToggle.removeAttribute('tabindex');
+      if(menuLabel) menuLabel.classList.remove('desktop-hidden');
+    }
+  }
+  syncToggleWithViewport();
+  window.addEventListener('resize', syncToggleWithViewport);
 
   if(navToggle){
     navToggle.addEventListener('click', function(){

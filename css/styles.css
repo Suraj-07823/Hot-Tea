@@ -88,7 +88,7 @@ body {
   }
   .header-actions {
     position: absolute;
-    right: 0.6rem;
+    right: 1.2rem;
     top: 50%;
     transform: translateY(-50%);
     z-index: 96;
@@ -139,6 +139,9 @@ body {
   .logo img {
     height: 52px;
   }
+  /* Hide the hamburger toggle and its text label on wider viewports */
+  #nav-toggle{display:none !important}
+  .menu-label{display:none !important}
 }
 .sr-only {
   position: absolute !important;
@@ -175,10 +178,15 @@ body {
   color:var(--muted);
 }
 
+/* Utility: allow JS to force-hide the toggle on desktop while keeping mobile visible */
+.desktop-hidden{ display:none !important; }
+
 @media (max-width:759px){
   .menu-label{display:inline-block}
   #nav-toggle{padding:0.4rem 0.6rem}
   .nav-icon span{width:22px;height:2.5px}
+  /* If the .desktop-hidden class is present, ensure it does NOT hide the toggle on small screens */
+  .desktop-hidden{ display:inline-flex !important; }
 }
 #nav-toggle[aria-expanded="true"] {
   background: rgba(139, 94, 60, 0.06);
@@ -228,25 +236,52 @@ body {
     height: 4px;
   }
 }
-/* Mobile: hide primary nav by default, show when open */
+/* Primary nav: desktop defaults; mobile handled below */
 .primary-nav {
-  display: none;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
 }
-.primary-nav.open {
-  display: block;
-  position: fixed;
-  left: 8px;
-  right: 8px;
-  top: var(--header-height, 64px);
-  bottom: 8px;
-  background: rgba(255, 255, 255, 0.96);
-  box-shadow: var(--shadow);
-  padding: 1rem 1rem 5rem;
-  overflow: auto;
-  border-radius: 12px;
-  z-index: 90;
-  transform-origin: top center;
-  animation: nav-open 0.28s ease forwards;
+.primary-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+}
+.primary-nav a {
+  text-decoration: none;
+  color: inherit;
+  padding: 0.45rem 0.5rem;
+}
+
+@media (max-width: 759px) {
+  /* Mobile: hide desktop nav; show toggle; dropdown-style menu */
+  .primary-nav {
+    display: none;
+  }
+  .primary-nav.open {
+    display: block;
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    top: calc(var(--header-height, 64px));
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: var(--shadow);
+    padding: 0.5rem;
+    border-radius: 8px;
+    z-index: 1199;
+    transform-origin: top center;
+    animation: nav-open 0.22s ease forwards;
+  }
+  .primary-nav.open ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .primary-nav.open li { border-bottom: 1px solid rgba(0,0,0,0.04); }
+  .primary-nav.open a { display: block; padding: 0.9rem 0.75rem; }
 }
 @keyframes nav-open {
   0% {
@@ -850,8 +885,9 @@ textarea {
     flex-direction: row;
   }
   #nav-toggle {
-    display: none;
+    display: none !important;
   }
+  .menu-label{ display: none !important; }
   .primary-nav {
     display: block;
     position: static;
