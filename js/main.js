@@ -104,13 +104,15 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 
   // Make CTA buttons explicitly navigate (helps in some mobile contexts)
-  document.querySelectorAll('.cta-row a, .reviews-cta a').forEach(a=>{
+  document.querySelectorAll('.cta-row a, .reviews-cta a, .mobile-cta a').forEach(a=>{
     a.addEventListener('click', function(e){
       // ensure navigation occurs even if other handlers interfere
       const href = this.getAttribute('href');
       if(!href) return;
-      // allow normal behaviour for external links
-      if(href.startsWith('http')) return; 
+      // If the href has a scheme (tel:, mailto:, http(s):, or wa.me), allow default behavior so native handlers run
+      const hasScheme = /^[a-zA-Z][a-zA-Z0-9+.-]*:/.test(href);
+      if(hasScheme) return;
+      // otherwise ensure navigation for relative links
       e.preventDefault();
       window.location.href = href;
     });
