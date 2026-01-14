@@ -128,6 +128,10 @@ document.addEventListener('DOMContentLoaded', function(){
   // Make CTA buttons explicitly navigate (helps in some mobile contexts)
   document.querySelectorAll('.cta-row a, .reviews-cta a, .mobile-cta a').forEach(a=>{
     a.addEventListener('click', function(e){
+      // visual micro-animation on click
+      this.classList.add('animate-pop-fast');
+      setTimeout(()=>this.classList.remove('animate-pop-fast'),800);
+
       // ensure navigation occurs even if other handlers interfere
       const href = this.getAttribute('href');
       if(!href) return;
@@ -139,6 +143,11 @@ document.addEventListener('DOMContentLoaded', function(){
       window.location.href = href;
     });
   });
+
+  // Small flourish: float the logo on desktop after a short delay
+  const logoGroup = document.querySelector('.logo');
+  if(logoGroup) setTimeout(()=>logoGroup.classList.add('animate-float'), 700);
+
 
   // Add lightweight click/keyboard animation to menu titles and reviewer names
   function animateTap(el){

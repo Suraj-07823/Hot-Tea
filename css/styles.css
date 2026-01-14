@@ -182,9 +182,25 @@ body {
 .desktop-hidden{ display:none !important; }
 
 @media (max-width:759px){
-  .menu-label{display:inline-block}
-  #nav-toggle{padding:0.4rem 0.6rem}
-  .nav-icon span{width:22px;height:2.5px}
+  /* Accessibility & readability for mobile: slightly larger base text and increased tap targets */
+  body{ font-size:17px; line-height:1.48; }
+  .site-title{ font-size:1.08rem; }
+  .hero h1{ font-size: clamp(1.8rem, 6.5vw, 2.4rem); }
+  .hero p.lead{ font-size:1.05rem; }
+
+  /* Make CTAs easier to tap on mobile */
+  .cta-row{ flex-direction:column; gap:0.9rem; }
+  .cta-row .btn{ padding:0.92rem 1rem; font-size:1rem; border-radius:12px; }
+
+  /* Primary nav: larger, easier-to-tap items when open */
+  .primary-nav.open a{ font-size:1rem; padding:0.95rem 0.75rem; }
+  .primary-nav a{ font-size:1rem; }
+
+  /* Toggle placement and size */
+  .menu-label{display:none}
+  #nav-toggle{ padding:0.45rem 1rem; }
+  .nav-icon span{ width:22px; height:3px; }
+
   /* If the .desktop-hidden class is present, ensure it does NOT hide the toggle on small screens */
   .desktop-hidden{ display:inline-flex !important; }
 }
@@ -610,6 +626,16 @@ textarea {
   }
 }
 
+/* Pop & sparkle */
+@keyframes pop { 0%{opacity:0;transform:translateY(8px) scale(.98)}100%{opacity:1;transform:none} }
+@keyframes pop-fast { 0%{opacity:0;transform:translateY(6px) scale(.98)}100%{opacity:1;transform:none} }
+@keyframes sparkle{0%{transform:scale(.6);opacity:0}50%{transform:scale(1.12);opacity:1}100%{transform:scale(1);opacity:0}}
+
+.animate-pop{animation:pop .46s cubic-bezier(.2,.9,.2,1) both}
+.animate-pop-fast{animation:pop-fast .28s cubic-bezier(.2,.9,.2,1) both}
+.animate-sparkle{animation:sparkle .9s ease-out both}
+
+
 /* Trust banner */
 .trust-banner {
   background: linear-gradient(90deg, var(--accent-2), var(--accent));
@@ -621,6 +647,19 @@ textarea {
   font-weight: 600;
   box-shadow: var(--shadow);
 }
+
+/* CTA initial pulse on load */
+.animate-cta:first-of-type { animation: pop-fast 0.4s cubic-bezier(.2,.9,.2,1) both; }
+
+/* tiny icon wobble for nav when opening */
+#nav-toggle.is-open .nav-icon { animation: wobble 0.6s ease; }
+
+/* floating logo */
+@media (min-width: 760px){
+  .logo.animate-float img { animation: float 5.6s ease-in-out infinite; }
+}
+
+
 
 /* Map placeholder and lazy-load button */
 .map-embed {
