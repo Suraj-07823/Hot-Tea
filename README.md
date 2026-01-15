@@ -1,34 +1,44 @@
-# Hot Tea — Static Website
+# Hot Tea — Static Site
 
-A small, mobile-first static website for the cafe "Hot Tea". This repository is intended for building and previewing the site locally or deploying to a static host.
+This repository contains a small static site for the Hot Tea café.
 
-## Quickstart (local preview)
-1. Clone the repo and open the `site` folder.
-2. Start a simple static server and visit http://localhost:8080
-   - Python (built-in): `python -m http.server 8080`
-   - Or use the **Live Server** extension in VS Code
+## Development
 
-## Optional: test serverless functions locally
-- Install Netlify CLI: `npm i -g netlify-cli`
-- Create a local `.env` file (do NOT commit this file). Example names:
-  - `GOOGLE_PLACES_API_KEY` (your Places API key)
-  - `GOOGLE_PLACE_ID` (your business place_id)
-- Run: `netlify dev` in the `site` folder and visit `/.netlify/functions/get-reviews` to test the reviews endpoint.
+- Start local server: `npm run start`
 
-> Note: Keep any API keys or secrets out of version control. Use environment variables or your hosting provider's secrets management.
+## CI
 
-## Replace placeholders
-- Add real images in `assets/images/` (interior, food, kitchen). Optimize images (WebP/AVIF recommended) and provide responsive sizes.
-- Update the Google Maps iframe `src` and the address/phone in `contact.html`.
+A GitHub Actions workflow (`.github/workflows/lighthouse-ci.yml`) runs:
+- `pa11y-ci` accessibility checks
+- `lhci autorun` (Lighthouse CI collect + assert + upload)
 
-## Accessibility & Performance
-- The site uses semantic HTML, ARIA attributes for the nav, and lazy-loading for images. Run a Lighthouse audit and improve LCP/CLS as needed.
+You can configure thresholds in `.lighthouserc.js` (see `assertions`).
 
-## Contributing
-- This repo is a simple static site — contributors can submit image updates, content improvements, or style tweaks via PRs.
+To run the checks locally:
+- `npm ci`
+- `npm run start` (or `npx http-server ./site -p 8080 -c-1`)
+- `npx pa11y-ci`
+- `npx lhci autorun --upload.target=temporary-public-storage`
 
-## License
-- Use as you like (no license attached by default). Add a LICENSE file if you plan to publish with specific terms.
+Build & deploy:
+- `npm run build` — produce optimized site in `site/dist`
+- `npm run deploy:netlify` — deploy `site/dist` to Netlify (requires `NETLIFY_AUTH_TOKEN` and `NETLIFY_SITE_ID` secrets)
 
----
+Logo & assets:
+- Replace `site/assets/images/logo.png` with your high-resolution logo (the attached file) to have it appear as the site favicon and app icon.
+- Add additional images for menu items to `site/assets/images/` and reference them from `menu.html`.
+
+PWA (installable web app):
+- I added an `Install App` button that appears when the browser fires the `beforeinstallprompt` event and a basic `manifest.json` + `sw.js` service worker to enable offline caching and installability.
+- Ensure your build process copies `manifest.json` and `sw.js` to the published `dist` folder so the service worker is served from the site root.
+- I added a `download.html` page that will be used to host Play Store / APK links when the Android build is ready.
+
+Feedback email forwarding (SendGrid):
+- I added a Netlify Function `netlify/functions/send-feedback.js` to forward feedback submissions by email using SendGrid.
+- Environment variables to set in Netlify site settings (Build & deploy > Environment):
+  - `SENDGRID_API_KEY` — your SendGrid API key (required)
+  - `SENDGRID_FROM` — email address used as the From (e.g., `no-reply@hottea.in`) (optional)
+  - `FEEDBACK_TO` — recipient email address (defaults to `vishwakarmasuraj089504@gmail.com`) (optional)
+
+If you prefer Mailgun or SMTP instead, tell me which provider and I'll adapt the function and the README.
 

@@ -1,22 +1,15 @@
 {
-  "name": "hot-tea-site-local",
+  "name": "hot-tea-site",
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "npx http-server ./ -p 8080 -c-1",
-    "build": "node build.js",
-    "check:pa11y": "npx pa11y-ci",
-    "check:lhci": "npx @lhci/cli autorun --upload.target=temporary-public-storage",
-    "deploy:netlify": "npx netlify-cli deploy --dir=dist --prod --site=$NETLIFY_SITE_ID --auth=$NETLIFY_AUTH_TOKEN"
+    "start": "http-server site -p 8080 -c-1",
+    "lhci": "lhci autorun --upload.target=temporary-public-storage",
+    "pa11y": "pa11y-ci"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.14",
-    "cssnano": "^5.1.15",
-    "esbuild": "^0.19.4",
-    "fs-extra": "^11.1.1",
-    "glob": "^10.2.7",
-    "html-minifier-terser": "^7.0.0",
-    "postcss": "^8.4.23",
-    "sharp": "^0.32.5"
+    "http-server": "^14.1.1",
+    "wait-on": "^7.0.1",
+    "pa11y-ci": "^6.0.1"
   }
 }
