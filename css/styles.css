@@ -749,8 +749,8 @@ textarea {
 
 /* Scroll-in animations */
 .animate-on-scroll {
-  opacity: 0;
-  transform: translateY(10px);
+  opacity: 1;
+  transform: none;
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 .animate-on-scroll.in-view {
